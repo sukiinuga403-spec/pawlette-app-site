@@ -1,0 +1,527 @@
+/* =========================================================
+   Pawlette HOME — atelier layer（v4）
+   Inugasuki Design の配色（ラベンダーピンク × パウダーブルー × モーヴ）に合わせ、
+   海外のガーリーな要素（レースの縁、リボン、イタリック体の英字）を控えめに加えた仕上げ。
+   home.css → home-polished.css → このファイル の順で読み込みます。
+   ========================================================= */
+
+@font-face { font-family: "PW Kaku"; src: url("../fonts/ZenKakuGothicNew-Regular-subset.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "PW Kaku"; src: url("../fonts/ZenKakuGothicNew-Medium-subset.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "PW Kaku"; src: url("../fonts/ZenKakuGothicNew-Bold-subset.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "PW Poppins"; src: url("../fonts/Poppins-Regular-subset.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "PW Poppins"; src: url("../fonts/Poppins-Medium-subset.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "PW Serif"; src: url("../fonts/CormorantGaramond-Italic-subset.woff2") format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
+
+.home {
+  --a-bg: #faeefa;          /* ラベンダーピンク */
+  --a-bg-soft: #fdf7fc;
+  --a-white: #ffffff;
+  --a-ink: #543a44;         /* 本文・見出し（モーヴ） */
+  --a-ink-soft: #7e6570;    /* 補足 */
+  --a-line: #ecd3e6;        /* 細い罫線 */
+  --a-pink: #f6e1ee;        /* 淡いピンク面 */
+  --a-pink-deco: #efc6dc;   /* 装飾 */
+  --a-blue: #d6e6f5;        /* パウダーブルー */
+  --a-blue-ink: #4b5d7c;    /* ブルー面の文字 */
+  --a-blue-text: #5f7394;   /* 白地のブルー文字 */
+  --a-accent: #9a5a78;      /* 小さな強調 */
+  --a-script: #a07a92;      /* 英字の飾り見出し */
+  --a-sans: "PW Kaku", "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+  --a-en: "PW Poppins", "Poppins", var(--a-sans);
+  --a-serif: "PW Serif", "Cormorant Garamond", "Times New Roman", serif;
+  font-family: var(--a-sans);
+  color: var(--a-ink);
+  background: var(--a-bg);
+  letter-spacing: 0.04em;
+}
+.home .home-root { background: var(--a-bg); }
+
+/* ---------- 共通：見出しの形 ---------- */
+.home .sec-head { text-align: center; margin: 0 auto 44px; }
+.home .sec-en {
+  margin: 0;
+  font-family: var(--a-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(38px, 4vw, 54px);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--a-script);
+}
+.home .sec-en--left { text-align: left; }
+.home .sec-en--sm { font-size: clamp(28px, 2.6vw, 36px); }
+.home .sec-ja {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin: 10px 0 0;
+  font-family: var(--a-sans);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.24em;
+  color: var(--a-ink);
+}
+.home .bow { width: 26px; height: 15px; color: var(--a-pink-deco); flex: none; }
+
+/* レースの縁（スカラップ） */
+.home .lace-top,
+.home .h-feat,
+.home .h-buy,
+.home .h-more { position: relative; }
+.home .h-feat::before,
+.home .h-buy::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: -11px;
+  height: 12px;
+  background: radial-gradient(circle at 9px 12px, var(--a-bg) 8px, transparent 8.5px) 0 0 / 18px 12px repeat-x;
+  pointer-events: none;
+}
+.home .h-show::before,
+.home .h-more::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: -11px;
+  height: 12px;
+  background: radial-gradient(circle at 9px 12px, var(--a-white) 8px, transparent 8.5px) 0 0 / 18px 12px repeat-x;
+  pointer-events: none;
+}
+.home .h-show { position: relative; }
+
+/* ---------- ヘッダー ---------- */
+.home .hd { background: var(--a-white); border-bottom: 0; }
+.home .hd::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -10px;
+  height: 10px;
+  background:
+    radial-gradient(circle at 8px 0, var(--a-white) 7px, transparent 7.5px) 0 0 / 16px 10px repeat-x;
+  filter: drop-shadow(0 1px 0 var(--a-line));
+  pointer-events: none;
+}
+.home .hd-band { background: var(--a-blue); height: 5px; }
+.home .hd .global-nav a {
+  font-family: var(--a-en);
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--a-blue-text);
+}
+.home .hd .global-nav a:hover,
+.home .hd .global-nav a[aria-current="page"] { color: var(--a-ink); }
+.home .hd .global-nav a[aria-current="page"]::after { height: 1px; bottom: 10px; background: var(--a-ink); }
+.home .hd-icon { font-family: var(--a-en); color: var(--a-blue-text); }
+.home .hd-icon--shop { background: var(--a-white); }
+.home .hd-icon--home { background: var(--a-blue); color: var(--a-blue-ink); }
+.home .hd-icon:hover { color: var(--a-ink); }
+
+/* ---------- ヒーロー ---------- */
+.home .h-hero { box-shadow: none; }
+.home .h-hero-photo::after {
+  background: linear-gradient(180deg, rgba(250, 238, 250, 0.08), rgba(120, 80, 110, 0.14));
+}
+
+/* ---------- 紹介 ---------- */
+.home .h-intro {
+  background:
+    radial-gradient(circle at 74% 34%, rgba(255, 255, 255, 0.9) 0, rgba(255, 255, 255, 0) 32%),
+    radial-gradient(rgba(239, 198, 220, 0.5) 1.2px, transparent 1.4px) 0 0 / 22px 22px,
+    var(--a-bg);
+}
+.home .h-arc { color: var(--a-bg); }
+.home .h-catch.halo {
+  text-shadow:
+    0 0 1px rgba(196, 140, 180, 0.6),
+    0 2px 0 rgba(196, 140, 180, 0.12),
+    0 10px 30px rgba(208, 150, 196, 0.36);
+}
+.home .h-card::after { background: linear-gradient(rgba(250, 238, 250, 0), var(--a-bg) 85%); }
+.home .h-lead { font-family: var(--a-sans); color: var(--a-ink); font-size: 15.5px; line-height: 2.1; }
+.home .h-lead strong { color: var(--a-ink); font-weight: 700; background: linear-gradient(transparent 64%, var(--a-pink) 64%); }
+
+/* ---------- 利用イメージ ---------- */
+.home .h-usage { background: var(--a-white); }
+.home .h-usage .sec-en { margin-bottom: 14px; }
+.home .h-usage-title {
+  font-family: var(--a-sans);
+  font-weight: 700;
+  font-size: clamp(28px, 2.6vw, 38px);
+  line-height: 1.7;
+  letter-spacing: 0.06em;
+  color: var(--a-ink);
+}
+.home .h-reco { margin-top: 30px; }
+.home .h-reco h3 {
+  font-family: var(--a-sans);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--a-ink-soft);
+}
+.home .h-reco li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid var(--a-line);
+  background: var(--a-bg-soft);
+  font-family: var(--a-sans);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--a-ink);
+}
+.home .h-reco li span { color: #d9a3c1; font-size: 12px; }
+.home .h-usage-note { font-family: var(--a-sans); color: var(--a-ink); line-height: 2.1; }
+.home .h-usage-caption { color: var(--a-ink-soft); }
+
+/* ---------- 機能紹介 ---------- */
+.home .h-feat {
+  background: var(--a-bg);
+  padding-top: 96px;
+}
+.home .h-flow {
+  margin-top: 0;
+  padding: 56px 48px 40px;
+  border-radius: 28px;
+  background: var(--a-white);
+}
+.home .h-flow-toggle {
+  top: 16px;
+  right: 22px;
+  border-color: var(--a-line);
+  font-family: var(--a-sans);
+  color: var(--a-ink-soft);
+  background: var(--a-white);
+}
+.home .h-flow-toggle:hover { background: var(--a-bg-soft); color: var(--a-ink); }
+.home .h-flow-cols {
+  -webkit-mask-image: linear-gradient(transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(transparent, #000 10%, #000 90%, transparent);
+}
+.home .h-feat-note { font-family: var(--a-sans); color: var(--a-ink-soft); }
+.home .h-feat-note a { color: var(--a-blue-text); }
+
+/* ---------- ウィジェット紹介 ---------- */
+.home .h-show { background: var(--a-white); padding-top: 104px; }
+.home .h-show-panel {
+  border: 1px solid var(--a-line);
+  border-radius: 28px;
+  background:
+    repeating-linear-gradient(90deg, rgba(246, 225, 238, 0.32) 0 18px, rgba(255, 255, 255, 0.5) 18px 36px),
+    var(--a-bg-soft);
+}
+.home .h-show-lower {
+  background: var(--a-white);
+  border-top: 1px solid var(--a-line);
+  border-radius: 0 0 28px 28px;
+}
+.home .h-show-thumb--prev,
+.home .h-show-thumb--next { opacity: 0.6; }
+.home .h-show-arrow { color: #d7b2c8; }
+.home .h-show-arrow:hover { color: var(--a-ink); }
+.home .h-show-label {
+  border: 0;
+  background: var(--a-blue);
+  font-family: var(--a-en);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--a-blue-ink);
+}
+.home .h-show-text h3 {
+  font-family: var(--a-sans);
+  font-weight: 700;
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1.7;
+  letter-spacing: 0.06em;
+  color: var(--a-ink);
+}
+.home .h-show-text .lead2 { font-family: var(--a-sans); font-weight: 400; font-size: 16px; line-height: 2.1; color: var(--a-ink); }
+.home .h-show-text .sub { font-family: var(--a-sans); font-size: 14px; color: var(--a-ink-soft); }
+.home .h-show-text .sub ul { list-style: none; padding-left: 0; }
+.home .h-show-text .sub li { position: relative; padding-left: 1.3em; }
+.home .h-show-text .sub li::before { content: "♡"; position: absolute; left: 0; color: #d9a3c1; font-size: 0.85em; top: 0.15em; }
+
+/* ---------- ご購入 ---------- */
+.home .h-buy { background: var(--a-bg); padding-top: 100px; }
+.home .h-buy .sec-head { margin-bottom: 0; }
+.home .h-buy-card { border: 0; border-radius: 28px; background: var(--a-white); margin-top: 44px; min-height: 520px; }
+.home .h-buy-divider { background: var(--a-line); }
+.home .h-buy-col { padding-top: 56px; }
+.home .h-buy-col .sec-en { margin-bottom: 8px; }
+.home .h-buy-col h3 {
+  font-family: var(--a-sans);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.24em;
+  color: var(--a-ink);
+}
+.home .h-buy-circle,
+.home .h-buy-col--os .h-buy-circle,
+.home .h-buy-col--shop .h-buy-circle {
+  width: 210px;
+  height: 210px;
+  margin-top: 30px;
+  background: var(--a-pink);
+  outline: 1px solid var(--a-pink);
+  outline-offset: 7px;
+}
+.home .h-buy-col--shop .h-buy-circle { background: var(--a-blue); outline-color: var(--a-blue); }
+.home .h-buy-circle.halo { color: var(--a-ink); text-shadow: none; }
+.home .h-buy-col--shop .h-buy-circle.halo { color: var(--a-blue-ink); }
+.home .h-buy-circle .os {
+  font-family: var(--a-en);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+.home .h-buy-circle .go { font-family: var(--a-sans); font-weight: 700; font-size: 20px; letter-spacing: 0.08em; }
+.home .h-buy-circle .ext { font-family: var(--a-en); font-size: 12px; letter-spacing: 0.08em; color: var(--a-blue-ink); }
+.home a.h-buy-circle:hover { background: #c9ddf0; }
+.home a.h-buy-circle:focus-visible { outline: 3px solid var(--c-focus); outline-offset: 7px; }
+.home .h-buy-note {
+  font-family: var(--a-sans);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: var(--a-ink-soft);
+}
+
+/* ---------- 下部の案内 ---------- */
+.home .h-more { background: var(--a-white); }
+.home .h-more-inner > div:first-child,
+.home .h-more-gcal {
+  border: 1px solid var(--a-line);
+  border-radius: 24px;
+  background: var(--a-bg-soft);
+}
+.home .h-more-gcal { background: var(--a-white); }
+.home .h-more h2 {
+  font-family: var(--a-sans);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  color: var(--a-ink);
+}
+.home .h-more .sec-en { margin-bottom: 6px; }
+.home .h-more p { font-family: var(--a-sans); color: var(--a-ink); }
+.home .h-more p a { color: var(--a-blue-text); }
+.home .h-more-btn {
+  min-height: 48px;
+  border: 0;
+  background: var(--a-bg);
+  font-family: var(--a-sans);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: var(--a-ink);
+}
+.home .h-more-btn:hover { background: var(--a-pink); color: var(--a-ink); }
+
+/* ---------- フッター（HOMEのみ） ---------- */
+.home .site-footer { background: var(--a-blue); border-top: 0; }
+.home .site-footer::before {
+  top: -11px;
+  height: 12px;
+  background: radial-gradient(circle at 9px 12px, var(--a-blue) 8px, transparent 8.5px) 0 0 / 18px 12px repeat-x;
+}
+.home .site-footer,
+.home .footer-brand p,
+.home .footer-nav a,
+.home .footer-contact,
+.home .copyright { color: var(--a-blue-ink); font-family: var(--a-sans); }
+.home .footer-nav h2 { color: var(--a-blue-ink); font-family: var(--a-en); font-weight: 500; }
+.home .footer-nav a:hover,
+.home .footer-nav a[aria-current="page"],
+.home .footer-contact a { color: #33435e; }
+.home .copyright { border-top-color: rgba(75, 93, 124, 0.25); font-family: var(--a-en); }
+
+/* ---------- スマートフォン ---------- */
+@media (max-width: 860px) {
+  .home .sec-head { margin-bottom: 30px; }
+  .home .sec-en { font-size: 36px; }
+  .home .sec-en--sm { font-size: 28px; }
+  .home .sec-ja { font-size: 14px; letter-spacing: 0.18em; gap: 10px; }
+  .home .bow { width: 22px; height: 13px; }
+  .home .h-usage .sec-en { text-align: center; }
+  .home .h-usage-title { font-size: clamp(22px, 6vw, 28px); }
+  .home .h-flow { padding: 18px 12px 20px; border-radius: 22px; }
+  .home .h-flow-toggle { margin: 0 4px 12px auto; }
+  .home .h-show { padding-top: 72px; }
+  .home .h-buy-circle,
+  .home .h-buy-col--os .h-buy-circle,
+  .home .h-buy-col--shop .h-buy-circle { width: 190px; height: 190px; }
+  .home .h-buy-circle .os { font-size: 22px; }
+  .home .h-buy-circle .go { font-size: 19px; }
+}
+
+@media (max-width: 860px) {
+  .home .h-buy-divider { display: none; }
+  .home .h-buy-col--os { border-bottom: 1px solid var(--a-line); margin-inline: 12px; }
+  .home .h-lead p,
+  .home .h-usage-note,
+  .home .h-show-text .lead2,
+  .home .h-more p { letter-spacing: 0.02em; }
+}
+
+/* =========================================================
+   v5（2026-11-06）
+   ・色を最初のカンプのピンク系に戻す（ブルーは使わず、差し色は淡いバター色）
+   ・全画面表示で画面幅いっぱいに使うレイアウト（ロゴは左上、写真は端まで）
+   ========================================================= */
+.home {
+  --a-bg: #fff5fa;          /* カンプの淡いピンク */
+  --a-bg-soft: #fffafc;
+  --a-line: #f6d2e2;
+  --a-pink: #ffe3ef;
+  --a-pink-deco: #f6b4d1;   /* ロゴのピンク（装飾） */
+  --a-blue: #fff3d9;        /* 差し色：バター（変数名は互換のため据え置き） */
+  --a-blue-ink: #7a5c2e;    /* バター面の文字 */
+  --a-blue-text: #9a5a78;   /* 白地の小さな文字（ナビなど） */
+  --a-script: #bd7397;      /* 英字の飾り見出し */
+  --a-cream: #fefaf3;
+  --gutter-x: clamp(20px, 5.5vw, 120px);
+}
+
+/* ---------- ヘッダー：ロゴ左上・ナビ右寄せ・画面幅いっぱい ---------- */
+.home .hd { height: 92px; }
+.home .hd-band { height: 6px; background: var(--a-cream); }
+.home .hd-bar {
+  width: auto;
+  height: 86px;
+  margin: 6px 0 0;
+  padding: 0 calc(152px + clamp(24px, 3vw, 56px)) 0 var(--gutter-x);
+}
+.home .hd-logo { width: clamp(84px, 6vw, 112px); }
+.home .hd .global-nav ul { gap: clamp(28px, 2.6vw, 52px); }
+.home .hd .global-nav a { font-size: clamp(13px, 0.78vw, 15px); }
+.home .hd-icons { height: 92px; }
+.home .hd-icon { height: 92px; }
+.home .hd-icon--home { background: var(--a-cream); color: var(--a-blue-text); }
+.home .hd-icon--shop { color: var(--a-blue-text); }
+
+/* ---------- ヒーロー：端までの写真 ---------- */
+.home .h-hero {
+  width: 100%;
+  height: clamp(420px, 38vw, 860px);
+  border-radius: 0;
+}
+.home .h-hero-photo img { object-position: 50% 55%; }
+.home .h-hero-photo::after { background: linear-gradient(180deg, rgba(255, 245, 250, 0.1), rgba(130, 70, 100, 0.14)); }
+.home .h-hero-logo { width: clamp(280px, 30vw, 620px); }
+.home .h-arc { top: calc(-1 * clamp(60px, 6vw, 130px)); height: calc(clamp(60px, 6vw, 130px) + 2px); }
+
+/* ---------- 紹介：画面幅に合わせて拡大 ---------- */
+.home .h-intro {
+  min-height: 0;
+  padding: clamp(80px, 8vw, 170px) var(--gutter-x) clamp(90px, 8vw, 170px);
+  grid-template-columns: clamp(250px, 21vw, 440px) minmax(0, 1fr);
+  column-gap: clamp(60px, 7vw, 160px);
+  background:
+    radial-gradient(circle at 70% 36%, rgba(255, 255, 255, 0.9) 0, rgba(255, 255, 255, 0) 34%),
+    radial-gradient(rgba(246, 180, 209, 0.38) 1.2px, transparent 1.4px) 0 0 / 22px 22px,
+    var(--a-bg);
+}
+.home .h-card { width: 100%; height: calc(clamp(250px, 21vw, 440px) * 2.65); }
+.home .h-catch .l1 { font-size: clamp(34px, 4.2vw, 88px); }
+.home .h-catch .l2 { font-size: clamp(64px, 7.9vw, 166px); }
+.home .h-catch .l3 { font-size: clamp(150px, 17.5vw, 360px); }
+.home .h-catch .l4 { font-size: clamp(46px, 5.5vw, 116px); }
+.home .h-lead { width: min(46vw, 860px); font-size: clamp(15px, 0.95vw, 18px); }
+.home .h-catch.halo {
+  text-shadow:
+    0 0 1px rgba(220, 120, 165, 0.55),
+    0 2px 0 rgba(220, 120, 165, 0.12),
+    0 10px 30px rgba(236, 140, 182, 0.36);
+}
+
+/* ---------- 利用イメージ ---------- */
+.home .h-usage {
+  grid-template-columns: minmax(0, 1.25fr) minmax(360px, 0.75fr);
+  padding: clamp(90px, 7vw, 150px) var(--gutter-x) clamp(90px, 7vw, 150px) 0;
+  gap: clamp(48px, 5vw, 120px);
+}
+.home .h-demo { max-width: none; }
+.home .h-usage-title { font-size: clamp(28px, 2.4vw, 48px); }
+.home .h-usage-note,
+.home .h-reco li { font-size: clamp(14px, 0.9vw, 17px); }
+.home .h-usage-caption { left: var(--gutter-x); }
+
+/* ---------- 機能紹介 ---------- */
+.home .h-feat { padding: clamp(90px, 7vw, 150px) var(--gutter-x) clamp(90px, 6vw, 130px); }
+.home .h-flow { padding: clamp(40px, 3.6vw, 72px) clamp(28px, 3.6vw, 80px) clamp(32px, 3vw, 60px); }
+.home .h-flow-cols { height: clamp(620px, 42vw, 900px); gap: clamp(22px, 2.2vw, 44px); }
+.home .h-flow-toggle { top: 18px; right: 24px; }
+
+/* ---------- ウィジェット紹介 ---------- */
+.home .h-show { padding: clamp(90px, 7vw, 150px) var(--gutter-x); }
+.home .h-show-panel {
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 211, 233, 0.26) 0 18px, rgba(255, 255, 255, 0.6) 18px 36px),
+    var(--a-bg-soft);
+}
+.home .h-show-row { height: clamp(330px, 24vw, 480px); }
+.home .h-show-window { height: calc(100% - 70px); }
+.home .h-show-lower { inset: clamp(330px, 24vw, 480px) 0 0; }
+.home .h-show-arrow { top: calc(clamp(330px, 24vw, 480px) / 2 - 40px); color: #ebb3cd; }
+.home .h-show-slide { padding: clamp(60px, 4.5vw, 96px) clamp(48px, 6vw, 140px) clamp(64px, 5vw, 110px); gap: clamp(56px, 5vw, 120px); }
+.home .h-show-slide figure { max-width: 620px; }
+.home .h-show-text h3 { font-size: clamp(22px, 1.9vw, 36px); }
+.home .h-show-text .lead2 { font-size: clamp(15px, 1vw, 19px); }
+
+/* ---------- ご購入 ---------- */
+.home .h-buy { padding: clamp(90px, 7vw, 150px) var(--gutter-x) clamp(100px, 7vw, 160px); }
+.home .h-buy-card { min-height: clamp(520px, 34vw, 700px); }
+.home .h-buy-circle,
+.home .h-buy-col--os .h-buy-circle,
+.home .h-buy-col--shop .h-buy-circle {
+  width: clamp(210px, 15vw, 300px);
+  height: clamp(210px, 15vw, 300px);
+  background: #ffd3e9;
+  outline-color: #ffd3e9;
+}
+.home .h-buy-col--shop .h-buy-circle { background: var(--a-blue); outline-color: #f5e3bb; }
+.home a.h-buy-circle:hover { background: #ffeac2; }
+.home .h-buy-circle .os { font-size: clamp(22px, 1.7vw, 32px); }
+.home .h-buy-circle .go { font-size: clamp(19px, 1.4vw, 26px); }
+
+/* ---------- 下部・フッター ---------- */
+.home .h-more { padding: clamp(80px, 6vw, 130px) var(--gutter-x); }
+.home .site-footer { background: var(--a-bg); }
+.home .site-footer::before { background: radial-gradient(circle at 9px 12px, var(--a-bg) 8px, transparent 8.5px) 0 0 / 18px 12px repeat-x; }
+.home .site-footer .container { width: auto; margin-inline: var(--gutter-x); }
+.home .site-footer,
+.home .footer-brand p,
+.home .footer-nav a,
+.home .footer-contact,
+.home .copyright { color: var(--a-ink); }
+.home .footer-nav h2 { color: var(--a-blue-text); }
+.home .footer-nav a:hover,
+.home .footer-nav a[aria-current="page"],
+.home .footer-contact a { color: #8c3459; }
+.home .copyright { border-top-color: var(--a-line); }
+
+@media (max-width: 860px) {
+  .home .hd { height: 72px; }
+  .home .hd-bar { height: 66px; padding: 0 16px; }
+  .home .h-hero { height: 65vw; }
+  .home .h-arc { top: -40px; height: 42px; }
+  .home .h-intro { padding: 72px 20px 84px; }
+  .home .h-card { width: min(260px, 72vw); height: min(690px, 190vw); }
+  .home .h-lead { width: auto; }
+  .home .h-usage { padding: 72px 18px 80px 0; }
+  .home .h-show-row { height: min(72vw, 420px); }
+  .home .h-show-lower { inset: min(72vw, 420px) 0 0; }
+  .home .h-show-arrow { top: 22%; }
+  .home .h-show-slide { padding: 28px 18px 36px; }
+  .home .h-flow-cols { height: 560px; }
+  .home .site-footer .container { margin-inline: 20px; }
+}
+@media (max-width: 860px) {
+  .home .h-catch .l1 { font-size: clamp(21px, 6.2vw, 34px); }
+  .home .h-catch .l2 { font-size: clamp(45px, 12vw, 72px); }
+  .home .h-catch .l3 { font-size: clamp(84px, 24vw, 142px); }
+  .home .h-catch .l4 { font-size: clamp(27px, 7.4vw, 46px); }
+}

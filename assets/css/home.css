@@ -1,0 +1,681 @@
+/* =========================================================
+   Pawlette Official Site — HOME（デザインカンプ再現用）
+   基準：Pawlette_HP.ai（1920px幅アートボード）を1440px幅に換算。
+   「Nu」は 1440px幅のときの N px。画面幅に合わせて比例拡縮します。
+   ※ 制作用ソース（home.src.css）から生成しています。数値は1440px幅基準です。
+   ========================================================= */
+
+@font-face {
+  font-family: "Pawlette Rounded";
+  src: url("../fonts/MPLUSRounded1c-Black-subset.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pawlette Nav";
+  src: url("../fonts/SUSE-Light-subset.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+.home {
+  --u: 1px;
+  --round: "Pawlette Rounded", "M PLUS Rounded 1c", "Hiragino Maru Gothic ProN", var(--font-base);
+  --navfont: "Pawlette Nav", "SUSE", "Quicksand", var(--font-en);
+  --hp-bg: #fff5fa;
+  --hp-cream: #fefaf3;
+  --hp-pink-light: #ffd3e9;
+  --hp-pink-line: #f6b4d1;
+  --hp-head: #d06898;      /* 大きな見出し（3:1以上） */
+  --hp-text-pink: #ad4677; /* 小さな文字（4.5:1以上） */
+  --hp-halo: #d06898;      /* 白文字の縁取り */
+  background: var(--c-white);
+}
+@supports (width: 1cqw) {
+  .home { container-type: inline-size; }
+  .home-root { --u: min(calc(100cqw / 1440), 1.3333px); }
+}
+@media (min-width: 861px) {
+  .home-root { --u: min(calc(100vw / 1440), 1.3333px); }
+  @supports (width: 1cqw) { .home-root { --u: min(calc(100cqw / 1440), 1.3333px); } }
+}
+
+.home-root { position: relative; width: 100%; max-width: 1920px; margin-inline: auto; overflow: hidden; }
+
+/* 白文字の読みやすさ（カンプのピンクの光彩を、縁を少し濃くして再現） */
+.home .halo {
+  color: #fff;
+  text-shadow:
+    0 0 calc(1 * var(--u)) var(--hp-halo),
+    0 0 calc(2 * var(--u)) var(--hp-halo),
+    0 0 calc(10 * var(--u)) rgba(232, 130, 175, 0.7),
+    0 0 calc(26 * var(--u)) rgba(246, 170, 205, 0.7),
+    0 0 calc(48 * var(--u)) rgba(250, 190, 218, 0.6);
+}
+
+/* カンプのピル型見出し */
+.home .hp-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(312 * var(--u));
+  height: calc(68 * var(--u));
+  margin: 0 auto;
+  border: calc(1.5 * var(--u)) solid var(--hp-pink-line);
+  border-radius: 999px;
+  background: #fff;
+  font-family: var(--round);
+  font-weight: 900;
+  font-size: calc(40 * var(--u));
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--hp-head);
+}
+
+/* ---------------------------------------------------------
+   ヘッダー（HOME専用）
+   --------------------------------------------------------- */
+.hd {
+  position: relative;
+  z-index: 50;
+  height: calc(100 * var(--u));
+  background: var(--hp-bg);
+}
+.hd-band { position: absolute; left: 0; top: 0; width: calc(1200 * var(--u)); height: calc(28 * var(--u)); background: var(--hp-cream); }
+.hd-bar {
+  position: absolute;
+  left: 0; top: calc(28 * var(--u));
+  width: calc(1200 * var(--u)); height: calc(56 * var(--u));
+  background: #fff;
+}
+.hd-logo {
+  position: absolute;
+  left: calc(13 * var(--u)); top: calc(7 * var(--u));
+  display: block;
+  width: calc(66 * var(--u));
+  border-radius: 6px;
+}
+.hd-logo img { width: 100%; height: auto; }
+.hd .global-nav { position: absolute; left: calc(365 * var(--u)); top: 0; height: calc(56 * var(--u)); }
+.hd .global-nav ul { display: flex; gap: 0; height: 100%; align-items: center; list-style: none; margin: 0; padding: 0; }
+.hd .global-nav li + li { margin-left: calc(70 * var(--u)); }
+.hd .global-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0;
+  font-family: var(--navfont);
+  font-weight: 300;
+  font-size: calc(20.5 * var(--u));
+  letter-spacing: 0.01em;
+  color: #b64f80;
+  text-decoration: none;
+  background: none;
+  border-radius: 4px;
+}
+.hd .global-nav a:hover { color: #8c3459; text-decoration: underline; text-underline-offset: 6px; }
+.hd .global-nav a[aria-current="page"] { background: none; color: #8c3459; }
+.hd .global-nav a[aria-current="page"]::before { content: none; }
+.hd .global-nav a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: calc(6 * var(--u));
+  height: calc(1.5 * var(--u));
+  min-height: 1px;
+  background: currentColor;
+  border-radius: 1px;
+}
+.hd .global-nav li { position: relative; }
+.hd .global-nav a { position: relative; }
+
+.hd-icons { position: absolute; right: 0; top: 0; display: flex; height: calc(100 * var(--u)); }
+.hd-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: calc(120 * var(--u));
+  height: calc(100 * var(--u));
+  padding-top: calc(4 * var(--u));
+  color: #6e6889;
+  text-decoration: none;
+  font-family: var(--navfont);
+  font-weight: 300;
+  font-size: calc(20.5 * var(--u));
+  line-height: 1;
+}
+.hd-icon svg { width: calc(58 * var(--u)); height: calc(46 * var(--u)); margin-bottom: calc(4 * var(--u)); }
+.hd-icon--shop { background: #fff; }
+.hd-icon--home { background: var(--hp-cream); }
+.hd-icon:hover { color: #8c3459; }
+.hd-icon[aria-current="page"] span { text-decoration: underline; text-underline-offset: 4px; }
+
+.hd .nav-toggle { display: none; }
+
+/* ---------------------------------------------------------
+   1. ヒーロー（写真＋白ロゴ＋弧）
+   --------------------------------------------------------- */
+.h-hero { position: relative; height: calc(475 * var(--u)); }
+.h-hero-photo { position: absolute; inset: 0 0 calc(-100 * var(--u)) 0; overflow: hidden; }
+.h-hero-photo img {
+  position: absolute;
+  left: calc(-16 * var(--u)); top: calc(-360 * var(--u));
+  width: calc(1480 * var(--u));
+  max-width: none;
+  height: auto;
+}
+.h-hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(252, 222, 236, 0.3);
+}
+.h-hero-logo {
+  position: absolute;
+  left: calc(487 * var(--u)); top: calc(80 * var(--u));
+  width: calc(463 * var(--u));
+  margin: 0;
+  z-index: 2;
+}
+.h-hero-logo img { width: 100%; height: auto; filter: drop-shadow(0 0 calc(6 * var(--u)) rgba(150, 80, 110, 0.18)); }
+
+/* ---------------------------------------------------------
+   2. 紹介（縦長UI＋大見出し）
+   --------------------------------------------------------- */
+.h-intro { position: relative; height: calc(1045 * var(--u)); background: var(--hp-bg); }
+.h-arc { position: absolute; left: 0; top: calc(-80 * var(--u)); width: 100%; height: calc(81 * var(--u)); color: var(--hp-bg); display: block; z-index: 1; }
+.h-card {
+  position: absolute;
+  left: calc(142 * var(--u)); top: calc(-3 * var(--u));
+  width: calc(198 * var(--u));
+  height: calc(1000 * var(--u));
+  margin: 0;
+  padding: calc(8 * var(--u)) calc(8 * var(--u)) 0;
+  background: #f6d7e5;
+  overflow: hidden;
+  z-index: 2;
+}
+.h-card img { width: calc(182 * var(--u)); max-width: none; height: auto; }
+.h-card::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: calc(260 * var(--u));
+  background: linear-gradient(rgba(255, 245, 250, 0), var(--hp-bg) 92%);
+}
+.h-catch {
+  position: absolute;
+  left: calc(452 * var(--u)); top: calc(12 * var(--u));
+  width: calc(980 * var(--u));
+  margin: 0;
+  font-family: var(--round);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  z-index: 2;
+}
+.h-catch > span { position: absolute; left: 0; display: block; white-space: nowrap; }
+.h-catch .l1 { top: calc(118 * var(--u)); font-size: calc(84 * var(--u)); letter-spacing: 0.01em; }
+.h-catch .l2 { top: calc(222 * var(--u)); font-size: calc(134 * var(--u)); }
+.h-catch .l2 .s { font-size: calc(84 * var(--u)); margin-left: calc(10 * var(--u)); }
+.h-catch .l3 { top: calc(362 * var(--u)); font-size: calc(272 * var(--u)); letter-spacing: 0; }
+.h-catch .l4 { top: calc(652 * var(--u)); font-size: calc(96 * var(--u)); letter-spacing: 0.04em; }
+.h-lead {
+  position: absolute;
+  left: calc(458 * var(--u)); top: calc(800 * var(--u));
+  width: calc(760 * var(--u));
+  margin: 0;
+  font-size: calc(17 * var(--u));
+  line-height: 1.9;
+  color: var(--c-text);
+  z-index: 2;
+}
+.h-lead p { margin: 0 0 0.4em; }
+
+/* ---------------------------------------------------------
+   3. 作業画面の横に置く利用イメージ
+   --------------------------------------------------------- */
+.h-usage { position: relative; height: calc(700 * var(--u)); background: #fff; }
+.mock {
+  position: absolute;
+  left: calc(-52 * var(--u)); top: calc(35 * var(--u));
+  width: calc(688 * var(--u)); height: calc(642 * var(--u));
+  border: calc(13 * var(--u)) solid #4d4d4d;
+  border-left-width: 0;
+  border-radius: 0 calc(22 * var(--u)) calc(22 * var(--u)) 0;
+  background: #e9e9e9;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr calc(124 * var(--u)) calc(186 * var(--u));
+  grid-template-rows: calc(26 * var(--u)) 1fr calc(22 * var(--u));
+}
+.mock-menu { grid-column: 1 / 3; background: #f2f2f2; border-bottom: calc(1 * var(--u)) solid #d5d5d5; display: flex; align-items: center; gap: calc(14 * var(--u)); padding-left: calc(60 * var(--u)); }
+.mock-menu i { display: block; width: calc(34 * var(--u)); height: calc(7 * var(--u)); border-radius: calc(4 * var(--u)); background: #c9c9c9; }
+.mock-work { grid-column: 1; grid-row: 2 / 4; position: relative; background: #a6a6a6; border-right: calc(1 * var(--u)) solid #8e8e8e; }
+.mock-board {
+  position: absolute;
+  left: calc(52 * var(--u)); right: calc(20 * var(--u)); top: calc(32 * var(--u)); bottom: calc(54 * var(--u));
+  background:
+    radial-gradient(circle, #e8a9c6 calc(2.4 * var(--u)), transparent calc(2.8 * var(--u))) 0 0 / calc(26 * var(--u)) calc(26 * var(--u)),
+    #fff;
+  box-shadow: 0 0 0 calc(1 * var(--u)) #8b8b8b;
+}
+.mock-board::before {
+  /* 左側の淡い面 */
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0; width: 46%;
+  background:
+    linear-gradient(#fff 0 0) padding-box,
+    repeating-linear-gradient(0deg, #f1f7f1 0 calc(12 * var(--u)), #fbfdfb calc(12 * var(--u)) calc(24 * var(--u)));
+  border-right: calc(1 * var(--u)) solid #e3eee3;
+}
+.mock-frame1, .mock-frame2 {
+  position: absolute;
+  border: calc(2 * var(--u)) solid #c9c9c9;
+  outline: calc(2 * var(--u)) dashed #e0b4c8;
+  outline-offset: calc(5 * var(--u));
+  background: #fff;
+}
+.mock-frame1 { left: 2%; top: 14%; width: 46%; height: 42%; transform: rotate(-8deg); }
+.mock-frame2 { left: 40%; top: 50%; width: 32%; height: 34%; transform: rotate(-12deg); box-shadow: 0 0 0 calc(7 * var(--u)) #fde8f1, 0 0 0 calc(9 * var(--u)) #e7a3c3; }
+.mock-line { position: absolute; left: 0; top: 18%; width: 120%; height: calc(1.5 * var(--u)); background: #e48bb3; transform-origin: 0 0; transform: rotate(-24deg); }
+.mock-status { position: absolute; left: 0; right: 0; bottom: 0; height: calc(22 * var(--u)); background: #e6e6e6; border-top: calc(1 * var(--u)) solid #cfcfcf; }
+.mock-panel { grid-column: 2; grid-row: 2 / 4; background: #ebebeb; padding: calc(14 * var(--u)) calc(10 * var(--u)); display: grid; align-content: start; gap: calc(11 * var(--u)); }
+.mock-panel i { display: flex; align-items: center; gap: calc(8 * var(--u)); height: calc(16 * var(--u)); }
+.mock-panel i::before { content: ""; width: calc(15 * var(--u)); height: calc(15 * var(--u)); border-radius: calc(3 * var(--u)); background: #6f6f6f; flex: none; }
+.mock-panel i::after { content: ""; height: calc(7 * var(--u)); flex: 1; max-width: calc(70 * var(--u)); border-radius: calc(4 * var(--u)); background: #bdbdbd; }
+.mock-panel b { display: block; height: calc(1 * var(--u)); background: #cfcfcf; margin: calc(4 * var(--u)) 0; }
+.mock-side { grid-column: 3; grid-row: 1 / 4; background: #fde3ef; border-left: calc(2 * var(--u)) solid #f4b6d1; padding: calc(10 * var(--u)) calc(8 * var(--u)) 0; overflow: hidden; }
+.mock-side img { width: 100%; max-width: none; height: auto; }
+
+.h-usage-text { position: absolute; left: calc(722 * var(--u)); top: 0; width: calc(680 * var(--u)); }
+.h-usage-title {
+  position: absolute;
+  left: 0; top: calc(62 * var(--u));
+  margin: 0;
+  font-family: var(--round);
+  font-weight: 900;
+  font-size: calc(56 * var(--u));
+  line-height: calc(75 * var(--u));
+  letter-spacing: 0.03em;
+  color: var(--hp-head);
+  text-shadow: 0 0 calc(2 * var(--u)) #fff, 0 0 calc(2 * var(--u)) #fff, 0 0 calc(8 * var(--u)) rgba(255, 211, 233, 0.9);
+  white-space: nowrap;
+}
+.h-reco { position: absolute; left: calc(13 * var(--u)); top: calc(254 * var(--u)); margin: 0; }
+.h-reco h3 {
+  margin: 0 0 calc(10 * var(--u));
+  font-family: var(--round);
+  font-weight: 900;
+  font-size: calc(24.5 * var(--u));
+  line-height: 1.3;
+  color: var(--hp-text-pink);
+}
+.h-reco ul { list-style: none; margin: 0; padding: 0; }
+.h-reco li {
+  font-family: var(--round);
+  font-weight: 900;
+  font-size: calc(24.5 * var(--u));
+  line-height: calc(42.5 * var(--u));
+  color: var(--hp-text-pink);
+}
+.h-reco li::before { content: "・"; margin-left: calc(-6 * var(--u)); }
+.h-usage-note { position: absolute; left: calc(13 * var(--u)); top: calc(450 * var(--u)); width: calc(560 * var(--u)); margin: 0; font-size: calc(16 * var(--u)); line-height: 1.9; color: var(--c-text); }
+.h-usage-caption { position: absolute; left: calc(20 * var(--u)); top: calc(682 * var(--u)); margin: 0; font-size: calc(12 * var(--u)); color: var(--c-text-sub); }
+
+/* ---------------------------------------------------------
+   4. 機能紹介（ウィジェット画像の配置）
+   --------------------------------------------------------- */
+.h-feat { position: relative; height: calc(920 * var(--u)); background: var(--hp-bg); }
+.h-feat .hp-pill { position: absolute; left: 0; right: 0; top: calc(30 * var(--u)); }
+.h-feat-board {
+  position: absolute;
+  left: 0; right: 0; top: calc(148 * var(--u));
+  height: calc(662 * var(--u));
+  overflow: hidden;
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.h-feat-board::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: calc(70 * var(--u));
+  background: linear-gradient(rgba(255, 245, 250, 0), var(--hp-bg) 90%);
+  pointer-events: none;
+}
+.h-feat-col { position: absolute; top: 0; display: grid; align-content: start; gap: calc(28 * var(--u)); list-style: none; margin: 0; padding: 0; }
+.h-feat-col--1 { left: calc(122 * var(--u)); width: calc(378 * var(--u)); }
+.h-feat-col--2 { left: calc(540 * var(--u)); width: calc(392 * var(--u)); }
+.h-feat-col--3 { left: calc(965 * var(--u)); width: calc(380 * var(--u)); }
+.h-feat-col img { width: 106%; max-width: none; margin-left: -3%; height: auto; }
+.h-feat-note { position: absolute; left: 0; right: 0; top: calc(832 * var(--u)); margin: 0; text-align: center; font-size: calc(15 * var(--u)); color: var(--c-text); }
+
+/* ---------------------------------------------------------
+   5. ウィジェット紹介（カルーセル風）
+   --------------------------------------------------------- */
+.h-show { position: relative; height: calc(1380 * var(--u)); background: #fff; }
+.h-show-panel {
+  position: absolute;
+  left: calc(73 * var(--u)); top: calc(45 * var(--u));
+  width: calc(1292 * var(--u)); height: calc(1240 * var(--u));
+  border-radius: 0 0 calc(20 * var(--u)) calc(20 * var(--u));
+  background: repeating-linear-gradient(45deg, #ffecf6 0 calc(17 * var(--u)), #fffefe calc(17 * var(--u)) calc(34 * var(--u)));
+  overflow: hidden;
+}
+.h-show-lower {
+  position: absolute;
+  left: 0; right: 0; top: calc(673 * var(--u)); bottom: 0;
+  border-radius: calc(20 * var(--u));
+  background: repeating-linear-gradient(45deg, #ffe1f0 0 calc(17 * var(--u)), #ffe5f2 calc(17 * var(--u)) calc(34 * var(--u)));
+}
+.h-show-row { position: absolute; left: 0; top: 0; width: 100%; height: calc(470 * var(--u)); z-index: 2; }
+.h-show-window { position: absolute; left: calc(127 * var(--u)); top: calc(37 * var(--u)); width: calc(1077 * var(--u)); height: calc(400 * var(--u)); overflow: hidden; }
+.h-show-thumb { position: absolute; margin: 0; }
+.h-show-thumb img { width: 100%; height: auto; display: block; }
+.h-show-thumb--prev { left: calc(-186 * var(--u)); top: calc(18 * var(--u)); width: calc(352 * var(--u)); }
+.h-show-thumb--cur  { left: calc(350 * var(--u)); top: calc(-8 * var(--u)); width: calc(378 * var(--u)); }
+.h-show-thumb--next { left: calc(896 * var(--u)); top: calc(6 * var(--u)); width: calc(340 * var(--u)); }
+.h-show-arrow {
+  position: absolute;
+  top: calc(120 * var(--u));
+  width: calc(104 * var(--u)); height: calc(170 * var(--u));
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  cursor: pointer;
+  filter: drop-shadow(0 0 calc(1 * var(--u)) #d06898) drop-shadow(0 0 calc(5 * var(--u)) rgba(220, 120, 165, 0.45));
+  border-radius: calc(12 * var(--u));
+}
+.h-show-arrow svg { width: 100%; height: 100%; display: block; }
+.h-show-arrow--prev { left: calc(357 * var(--u)); }
+.h-show-arrow--next { left: calc(867 * var(--u)); }
+.h-show-arrow:hover { transform: scale(1.04); }
+
+.h-show-slides { list-style: none; margin: 0; padding: 0; }
+.h-show-slide { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+.js .h-show-slide[hidden] { display: none; }
+.h-show-slide figure {
+  position: absolute;
+  left: calc(44 * var(--u)); top: calc(478 * var(--u));
+  width: calc(630 * var(--u));
+  margin: 0;
+}
+.h-show-slide figure img { width: 100%; height: auto; display: block; }
+.h-show-label {
+  position: absolute;
+  left: calc(793 * var(--u)); top: calc(555 * var(--u));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(255 * var(--u)); height: calc(55 * var(--u));
+  border: calc(1.5 * var(--u)) solid var(--hp-pink-line);
+  border-radius: 999px;
+  background: #fff;
+  font-family: var(--round);
+  font-weight: 900;
+  font-size: calc(32 * var(--u));
+  line-height: 1;
+  color: var(--hp-head);
+}
+.h-show-text { position: absolute; left: calc(694 * var(--u)); top: calc(676 * var(--u)); width: calc(600 * var(--u)); }
+.h-show-text h3,
+.h-show-text .lead2 {
+  margin: 0;
+  font-family: var(--round);
+  font-weight: 900;
+  font-size: calc(41.6 * var(--u));
+  line-height: calc(73 * var(--u));
+  letter-spacing: 0.01em;
+}
+.h-show-text .sub { margin: calc(18 * var(--u)) 0 0; font-size: calc(16 * var(--u)); line-height: 1.8; color: #6b2b48; }
+.h-show-text .sub ul { margin: 0; padding-left: 1.2em; }
+.h-show-text .check-mark { font-size: calc(14 * var(--u)); }
+.h-show-status { position: absolute; }
+
+/* ---------------------------------------------------------
+   6. ご購入（2分割カード）
+   --------------------------------------------------------- */
+.h-buy { position: relative; height: calc(1052 * var(--u)); background: var(--hp-bg); }
+.h-buy .hp-pill { position: absolute; left: 0; right: 0; top: calc(80 * var(--u)); }
+.h-buy-card {
+  position: absolute;
+  left: calc(73 * var(--u)); top: calc(185 * var(--u));
+  width: calc(1292 * var(--u)); height: calc(715 * var(--u));
+  border-radius: calc(30 * var(--u));
+  background: repeating-linear-gradient(45deg, #fffeff 0 calc(17 * var(--u)), #fff calc(17 * var(--u)) calc(34 * var(--u)));
+}
+.h-buy-divider { position: absolute; left: calc(644 * var(--u)); top: calc(35 * var(--u)); width: calc(3 * var(--u)); height: calc(645 * var(--u)); background: #ffd1e8; }
+.h-buy-col { position: absolute; top: 0; width: calc(600 * var(--u)); height: 100%; text-align: center; }
+.h-buy-col--os { left: calc(24 * var(--u)); }
+.h-buy-col--shop { left: calc(685 * var(--u)); }
+.h-buy-col--shop .h-buy-circle { margin-left: calc(-192 * var(--u)); }
+.h-buy-col h3 {
+  position: absolute;
+  left: 0; right: 0; top: calc(108 * var(--u));
+  margin: 0;
+  font-family: var(--round);
+  font-weight: 900;
+  font-size: calc(56 * var(--u));
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--hp-head);
+  text-shadow: 0 0 calc(2 * var(--u)) #fff, 0 0 calc(2 * var(--u)) #fff;
+}
+.h-buy-circle {
+  position: absolute;
+  top: calc(207 * var(--u));
+  left: 50%;
+  width: calc(340 * var(--u)); height: calc(340 * var(--u));
+  margin: 0 0 0 calc(-170 * var(--u));
+  border-radius: 50%;
+  background: var(--hp-pink-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--round);
+  font-weight: 900;
+  text-decoration: none;
+}
+.h-buy-col--os .h-buy-circle { margin-left: calc(-173 * var(--u)); }
+.h-buy-circle .os { font-size: calc(52 * var(--u)); line-height: calc(66 * var(--u)); text-align: left; }
+.h-buy-circle .go { font-size: calc(41 * var(--u)); line-height: 1.2; margin-top: calc(12 * var(--u)); }
+.h-buy-circle .ext {
+  margin-top: calc(14 * var(--u));
+  font-family: var(--font-base);
+  font-weight: 700;
+  font-size: calc(15 * var(--u));
+  color: #8c3459;
+  text-shadow: none;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(4 * var(--u));
+}
+.h-buy-circle .ext svg { width: calc(15 * var(--u)); height: calc(15 * var(--u)); }
+a.h-buy-circle { transition: transform 0.15s ease, box-shadow 0.15s ease; }
+a.h-buy-circle:hover { transform: scale(1.03); box-shadow: 0 calc(8 * var(--u)) calc(24 * var(--u)) rgba(214, 120, 160, 0.25); }
+a.h-buy-circle:focus-visible { outline-offset: 6px; border-radius: 50%; }
+.h-buy-note {
+  position: absolute;
+  left: 0; right: 0; top: calc(600 * var(--u));
+  margin: 0;
+  font-family: var(--round);
+  font-weight: 900;
+  font-size: calc(23 * var(--u));
+  line-height: 1.5;
+  color: var(--hp-text-pink);
+}
+.h-buy-note--small { font-family: var(--font-base); font-weight: 700; font-size: calc(16 * var(--u)); }
+.h-buy-col--os .h-buy-note { margin-left: calc(-6 * var(--u)); }
+.h-buy-check { position: absolute; left: 0; right: 0; top: calc(650 * var(--u)); margin: 0; font-size: calc(13 * var(--u)); }
+.h-buy-col--shop .h-buy-note { margin-left: calc(-44 * var(--u)); }
+
+/* ---------------------------------------------------------
+   7. 追加ブロック（カンプ外：ABOUT／SHOP導線とGoogle Calendar）
+   --------------------------------------------------------- */
+.h-more { position: relative; background: #fff; padding: calc(72 * var(--u)) 0 calc(88 * var(--u)); }
+.h-more-inner { width: calc(1292 * var(--u)); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: calc(40 * var(--u)); align-items: start; }
+.h-more h2 {
+  margin: 0 0 calc(14 * var(--u));
+  font-family: var(--round);
+  font-weight: 900;
+  font-size: calc(30 * var(--u));
+  line-height: 1.4;
+  color: var(--hp-head);
+}
+.h-more p { font-size: calc(16 * var(--u)); line-height: 1.9; margin: 0 0 calc(10 * var(--u)); }
+.h-more .status { font-size: calc(13 * var(--u)); }
+.h-more-links { display: flex; flex-wrap: wrap; gap: calc(20 * var(--u)); margin-top: calc(18 * var(--u)); }
+.h-more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: calc(240 * var(--u));
+  min-height: calc(56 * var(--u));
+  padding: 0 calc(28 * var(--u));
+  border: calc(1.5 * var(--u)) solid var(--hp-pink-line);
+  border-radius: 999px;
+  background: #fff;
+  font-family: var(--round);
+  font-weight: 900;
+  font-size: calc(22 * var(--u));
+  color: var(--hp-text-pink);
+  text-decoration: none;
+}
+.h-more-btn:hover { background: var(--hp-bg); color: #8c3459; }
+.h-more-gcal { padding: calc(28 * var(--u)) calc(32 * var(--u)); border: calc(1.5 * var(--u)) solid var(--hp-pink-light); border-radius: calc(30 * var(--u)); background: var(--hp-bg); }
+.h-more-gcal h2 { font-size: calc(26 * var(--u)); display: flex; flex-wrap: wrap; align-items: center; gap: calc(10 * var(--u)); }
+
+/* ---------------------------------------------------------
+   スマートフォン・タブレット（860px以下）
+   カンプの要素を保ったまま、縦一列に再配置
+   --------------------------------------------------------- */
+@media (max-width: 860px) {
+  .home-root { --u: 1px; }
+
+  /* ヘッダー */
+  .hd { height: 72px; background: #fff; border-bottom: 6px solid var(--hp-bg); }
+  .hd-band { width: 100%; height: 6px; }
+  .hd-bar { top: 6px; width: 100%; height: 66px; }
+  .hd-logo { left: 14px; top: 8px; width: 82px; }
+  .hd-icons { display: none; }
+  .js .hd .nav-toggle { display: inline-flex; position: absolute; right: 12px; top: 9px; }
+  .hd .global-nav { position: static; height: auto; }
+  .js .hd .global-nav { position: absolute; left: 0; right: 0; top: 66px; display: none; background: #fff; box-shadow: 0 16px 24px rgba(214, 120, 160, 0.12); }
+  .js .hd .global-nav.is-open { display: block; }
+  .js .hd .global-nav ul { flex-direction: column; align-items: stretch; padding: 8px 20px 18px; height: auto; }
+  .hd .global-nav li + li { margin-left: 0; }
+  .js .hd .global-nav a { display: flex; width: 100%; min-height: 52px; padding: 0 12px; font-size: 18px; border-bottom: 1px solid var(--c-line); }
+  .hd .global-nav a[aria-current="page"]::after { left: 12px; right: auto; width: 48px; bottom: 8px; }
+  html:not(.js) .hd { height: auto; }
+  html:not(.js) .hd-bar { position: relative; height: auto; padding: 70px 12px 10px; }
+  html:not(.js) .hd .global-nav ul { flex-wrap: wrap; gap: 4px 18px; }
+
+  /* ヒーロー */
+  .h-hero { height: 62vw; min-height: 220px; }
+  .h-hero-photo { bottom: -12vw; }
+  .h-hero-photo img { left: -2%; top: -26vw; width: 104%; }
+  .h-hero-logo { left: 50%; top: 50%; width: 62vw; max-width: 360px; transform: translate(-50%, -58%); }
+
+  /* 紹介 */
+  .h-intro { height: auto; padding: 8px 20px 56px; }
+  .h-arc { top: -12vw; height: calc(12vw + 1px); }
+  .h-catch, .h-catch > span, .h-lead { position: static; }
+  .h-catch { width: auto; text-align: center; margin: 0 auto; }
+  .h-catch > span { white-space: normal; }
+  .h-catch .l1 { font-size: clamp(22px, 7vw, 40px); margin-bottom: 0.3em; }
+  .h-catch .l2 { font-size: clamp(36px, 12vw, 72px); }
+  .h-catch .l2 .s { font-size: 0.6em; margin-left: 0.1em; }
+  .h-catch .l3 { font-size: clamp(88px, 30vw, 180px); line-height: 1.05; }
+  .h-catch .l4 { font-size: clamp(26px, 8.2vw, 56px); letter-spacing: 0.02em; }
+  .h-lead { width: auto; max-width: 560px; margin: 28px auto 0; font-size: 15px; }
+  .h-card { position: relative; left: auto; top: auto; width: min(260px, 70vw); height: min(700px, 190vw); margin: 36px auto 0; padding: 8px 8px 0; }
+  .h-card img { width: 100%; }
+  .h-card::after { height: 40%; }
+
+  /* 利用イメージ */
+  .h-usage { height: auto; padding: 48px 0 56px; }
+  .mock { position: relative; left: auto; top: auto; width: calc(100% - 20px); height: auto; aspect-ratio: 688 / 642; grid-template-columns: 1fr 18% 27%; grid-template-rows: 4% 1fr 3.4%; border-width: 8px; border-left-width: 0; border-radius: 0 14px 14px 0; }
+  .mock-panel { gap: 6px; padding: 8px 5px; }
+  .mock-panel i { height: 10px; gap: 4px; }
+  .mock-panel i::before { width: 9px; height: 9px; }
+  .mock-panel i:nth-child(n+8) { display: none; }
+  .mock-side { padding: 5px 4px 0; }
+  .mock-board { left: 10%; right: 6%; top: 6%; bottom: 10%; background-size: 14px 14px; }
+  .mock-status { height: 12px; }
+  .h-usage-caption { position: static; margin: 10px 20px 0; font-size: 12px; }
+  .h-usage-text { position: static; width: auto; padding: 32px 20px 0; text-align: center; }
+  .h-usage-title { position: static; white-space: normal; font-size: clamp(26px, 7.4vw, 44px); line-height: 1.45; }
+  .h-reco { position: static; display: inline-block; text-align: left; margin-top: 26px; }
+  .h-reco h3, .h-reco li { font-size: clamp(18px, 5vw, 24px); line-height: 1.8; }
+  .h-usage-note { position: static; width: auto; max-width: 560px; margin: 20px auto 0; font-size: 15px; text-align: left; }
+
+  /* 機能紹介 */
+  .h-feat { height: auto; padding: 44px 16px 48px; }
+  .h-feat .hp-pill, .h-feat-board, .h-feat-note, .h-feat-col { position: static; }
+  .home .hp-pill { width: 220px; height: 52px; font-size: 26px; }
+  .h-feat-board { display: grid; grid-template-columns: 1fr 1fr; grid-template-areas: "a b" "c b"; align-items: start; gap: 12px; margin-top: 28px; height: min(820px, 150vw); max-width: 560px; margin-inline: auto; }
+  .h-feat-col { width: auto; gap: 12px; }
+  .h-feat-col--1 { grid-area: a; }
+  .h-feat-col--2 { grid-area: b; }
+  .h-feat-col--3 { grid-area: c; }
+  .h-feat-board::after { height: 160px; }
+  .h-feat-note { margin-top: 18px; font-size: 14px; padding-inline: 8px; }
+
+  /* カルーセル */
+  .h-show { height: auto; padding: 32px 0 40px; }
+  .h-show-panel { position: relative; left: auto; top: auto; width: auto; height: auto; margin: 0 12px; border-radius: 0 0 16px 16px; padding-bottom: 28px; }
+  .h-show-row { position: relative; height: 72vw; max-height: 420px; }
+  .h-show-window { left: 0; top: 18px; width: 100%; height: calc(100% - 18px); }
+  .h-show-thumb--prev { left: -36%; top: 6%; width: 46%; }
+  .h-show-thumb--cur { left: 22%; top: 0; width: 56%; }
+  .h-show-thumb--next { left: 90%; top: 4%; width: 44%; }
+  .h-show-arrow { top: 22%; width: 44px; height: 72px; }
+  .h-show-arrow--prev { left: 6px; }
+  .h-show-arrow--next { left: auto; right: 6px; }
+  .h-show-lower { top: min(72vw, 420px); }
+  .h-show-slide { position: relative; height: auto; padding: 24px 16px 0; display: flex; flex-direction: column; align-items: center; }
+  .h-show-slide figure { position: static; width: min(100%, 420px); order: 3; margin-top: 22px; }
+  .h-show-label { position: static; width: 200px; height: 46px; font-size: 24px; order: 1; }
+  .h-show-text { position: static; width: auto; max-width: 520px; order: 2; text-align: center; margin-top: 16px; }
+  .h-show-text h3, .h-show-text .lead2 { font-size: clamp(22px, 6.4vw, 34px); line-height: 1.6; }
+  .h-show-text .sub { font-size: 15px; text-align: left; }
+  .h-show-text .check-mark { font-size: 13px; }
+
+  /* ご購入 */
+  .h-buy { height: auto; padding: 48px 12px 56px; }
+  .h-buy .hp-pill { position: static; }
+  .h-buy-card { position: relative; left: auto; top: auto; width: auto; height: auto; margin-top: 28px; border-radius: 24px; padding: 8px 16px 32px; }
+  .h-buy-divider { position: static; width: 70%; height: 2px; margin: 8px auto; }
+  .h-buy-col { position: static; width: auto; height: auto; padding: 28px 0 16px; }
+  .h-buy-col h3 { position: static; font-size: clamp(30px, 8.6vw, 44px); }
+  .h-buy-circle, .h-buy-col--os .h-buy-circle, .h-buy-col--shop .h-buy-circle { position: relative; left: auto; top: auto; margin: 22px auto 0; width: min(64vw, 280px); height: min(64vw, 280px); }
+  .h-buy-circle .os { font-size: clamp(30px, 9vw, 44px); line-height: 1.3; }
+  .h-buy-circle .go { font-size: clamp(26px, 7.6vw, 36px); }
+  .h-buy-circle .ext { font-size: 14px; }
+  .h-buy-circle .ext svg { width: 14px; height: 14px; }
+  .h-buy-note, .h-buy-col--os .h-buy-note, .h-buy-col--shop .h-buy-note { position: static; margin: 20px 0 0; font-size: 18px; }
+  .h-buy-note--small { font-size: 14px; }
+  .h-buy-check { position: static; margin-top: 10px; font-size: 13px; }
+
+  /* 追加ブロック */
+  .h-more { padding: 48px 16px 56px; }
+  .h-more-inner { width: auto; grid-template-columns: 1fr; gap: 28px; }
+  .h-more h2 { font-size: 24px; }
+  .h-more-gcal h2 { font-size: 21px; }
+  .h-more p { font-size: 15px; }
+  .h-more .status { font-size: 12px; }
+  .h-more-btn { min-width: 0; flex: 1 1 200px; min-height: 52px; font-size: 18px; }
+  .h-more-gcal { padding: 22px 20px; border-radius: 22px; }
+  .home .hp-pill { border-width: 1.5px; }
+  .h-show-label { border-width: 1.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .h-show-arrow:hover, a.h-buy-circle:hover { transform: none; }
+}

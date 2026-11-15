@@ -1,0 +1,13 @@
+/* Review-only layout: the Requirements card has a single column (the purchase column is held back). */
+.home .h-buy-card.h-buy-card--single { grid-template-columns: 1fr; min-height: 0; }
+.home .h-buy-card.h-buy-card--single .h-buy-col { padding-bottom: 64px; }
+.home .h-buy-card.h-buy-card--single .h-buy-col--os { border-bottom: 0; max-width: 640px; margin-inline: auto; }
+@media (max-width: 860px) { .home .h-buy-card.h-buy-card--single .h-buy-col--os { margin-inline: auto; } }
+
+/* 320px: long paths and file names inside tables must wrap instead of widening the page. */
+.legal-table, .legal-table th, .legal-table td, .legal-table code, .legal-wrap code { overflow-wrap: anywhere; word-break: normal; }
+.legal-table { max-width: 100%; }
+
+/* Contrast: the home catch copy was white (with a pink glow) on a pale pink background (about 1.07:1). A deeper rose keeps the same layout and reads at 4.5:1 or more. */
+.home .h-catch.halo,
+.home .h-catch.halo span { color: #b24b7c; -webkit-text-fill-color: #b24b7c; text-shadow: 0 1px 0 rgba(255,255,255,.65); }
