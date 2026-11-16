@@ -59,7 +59,7 @@
     <section class="section" style="padding-top:8px">
       <div class="container">
         <article class="legal-wrap">
-          <p class="meta">制定日：2026年11月15日<br>最終更新日：2026年11月15日</p>
+          <p class="meta">制定日：2026年11月15日<br>最終更新日：2026年11月16日</p>
           <p>Pawlette（運営：いぬがすき。以下「運営者」）は、Windows用デスクトップウィジェットアプリ「Pawlette」（以下「本アプリ」）および本ウェブサイト（以下「本サイト」）における利用者の情報の取り扱いについて、以下のとおりプライバシーポリシー（以下「本ポリシー」）を定めます。</p>
 
           <p><a href="#english" lang="en">English version is below ↓ (Google user data)</a></p>
@@ -113,13 +113,13 @@
           <p data-gs="privacy-3">なお、現在配布中のv1.1.2にはこの機能は含まれておらず、Googleユーザーデータへのアクセスは行いません。次回アップデートでの提供に向けて、Googleの確認・審査を進めています。審査用の候補版ではこの機能を実装しており、利用者が連携を許可した場合に限り、以下のとおり取り扱います。一般の利用者への提供時期は、審査の完了後にご案内します。</p>
           <ul>
             <li><strong>本アプリで作成した予定の内容</strong>（題名・日付・時刻）と、本アプリがGoogle上に作成する<strong>Pawlette専用カレンダー</strong>の情報（カレンダーID、名称、タイムゾーン）。本アプリ内の管理用の識別子も、Google上の予定の非公開プロパティとして保存されます。メモ、カテゴリ、色などは送信しません。</li>
-            <li><strong>利用者ご自身が所有するGoogleカレンダー（メインカレンダー）の予定の表示用情報</strong>：題名、開始・終了の日時、予定の種類、公開範囲、ご自身の出席状況、予定へのリンク。予定の説明、場所、参加者のメールアドレスなどは取得しません。</li>
+            <li><strong>利用者ご自身のメイン（primary）カレンダー（ご自身が所有）の予定の表示用情報</strong>：題名、開始・終了の日時、予定の種類、公開範囲、ご自身の出席状況、予定へのリンク。予定の説明、場所、参加者のメールアドレスなどは取得しません。</li>
             <li><strong>認証情報</strong>（アクセストークン・リフレッシュトークン）。Googleアカウントのメールアドレス、氏名、プロフィールは取得しません。</li>
           </ul>
           <p>本アプリがリクエストするOAuthスコープは、次の2つだけです。</p>
           <table class="legal-table">
             <tr><th scope="row"><code>https://www.googleapis.com/auth/calendar.app.created</code></th><td>メイン以外のGoogleカレンダーの作成、そのカレンダー上の予定の参照・作成・変更・削除（Googleの同意画面の表示）。本アプリが作成したPawlette専用カレンダーに対してのみ使います。</td></tr>
-            <tr><th scope="row"><code>https://www.googleapis.com/auth/calendar.events.owned.readonly</code></th><td>オーナー権を持っているGoogleカレンダー上の予定の参照（同上）。読み取り専用で、メインカレンダーの予定を表示するために使います。</td></tr>
+            <tr><th scope="row"><code>https://www.googleapis.com/auth/calendar.events.owned.readonly</code></th><td>ご自身が所有するメイン（primary）カレンダー上の予定の参照（同上）。読み取り専用で、メイン（primary）カレンダーの予定を表示するために使います。Pawletteが読むのはメイン（primary）カレンダーだけです。</td></tr>
           </table>
 
           <h2 id="google-purpose">4. Googleデータへアクセスする目的</h2>
@@ -131,7 +131,7 @@
           <h2 id="google-use">5. Googleデータの利用方法</h2>
           <ul>
             <li>取得したデータは、上記の機能を利用者の画面で提供するためにだけ使います。</li>
-            <li>Googleデータの書き込みは、本アプリが作成した<strong>Pawlette専用カレンダーのみ</strong>です。メインカレンダーを含め、そのほかのカレンダーや予定を作成・変更・削除することはありません。</li>
+            <li>Googleデータの書き込みは、本アプリが作成した<strong>Pawlette専用カレンダーのみ</strong>です。メイン（primary）カレンダーを含め、そのほかのカレンダーや予定を作成・変更・削除することはありません。</li>
             <li>Googleから取得した予定は、画面での表示以外には使いません。分析、広告、他のサービスへの提供、<strong>生成AIや機械学習モデルの学習には使用しません</strong>。</li>
           </ul>
           <p>運営者は、Googleユーザーデータを、本ポリシーに記載した目的および利用者が本アプリの画面上で利用する機能の提供・改善以外には利用しません。</p>
@@ -190,7 +190,7 @@
             <li>確認の画面で、解除を実行します（初期の選択は「キャンセル」です）。</li>
             <li>本アプリは、Googleにアクセス権の取り消し（失効）を要求し、パソコン内のGoogleに関するデータを削除して、以後のGoogleとの通信を止めます。オフラインなどで取り消せなかった場合は、次にオンラインになったときに自動で再試行します。それでもできない場合は、Googleアカウントで許可を取り消すよう画面でご案内します。</li>
           </ol>
-          <p>Googleアカウント側からも、Googleアカウントの「セキュリティ」設定にある、アカウントにアクセスできるサードパーティ製アプリの一覧から本アプリを選び、アクセス権を削除することで連携を解除できます。</p>
+          <p>Googleアカウント側からも、Googleアカウントの「セキュリティ」設定にある、アカウントにアクセスできるサードパーティ製アプリの一覧から本アプリを選び、アクセス権を削除することで連携を解除できます。接続に失敗した場合（許可の拒否・時間切れ・通信の失敗など）や、必要な2つの権限の一方しか許可されなかった場合は、何も保存せず未連携のままにし、画面に短いお知らせを表示します。</p>
 
           <h2 id="security">13. セキュリティ対策</h2>
           <p>運営者は、取り扱う情報の漏えい、滅失、毀損、不正アクセスを防ぐため、合理的かつ適切な安全管理措置を講じるよう努めます。ただし、インターネット上の通信や電子的な保存において、安全性を完全に保証することはできません。</p>
@@ -225,7 +225,7 @@
           <p>運営者は、法令の変更や本アプリの機能変更等に応じて、本ポリシーを改定することがあります。改定後の内容は、本ページに掲載した時点から適用されます。</p>
           <p>Googleユーザーデータの利用方法を、当初お知らせした目的と異なる方法で変更する場合は、事前に利用者へお知らせし、改定後のポリシーへの同意を得たうえで新しい方法での利用を開始します。</p>
 
-          <p class="meta" style="margin-top:2.4em">制定日：2026年11月15日<br>最終更新日：2026年11月15日</p>
+          <p class="meta" style="margin-top:2.4em">制定日：2026年11月15日<br>最終更新日：2026年11月16日</p>
         
           <hr>
           <section id="english" lang="en" aria-labelledby="en-title">
@@ -238,13 +238,13 @@
             <h3>What the App accesses (OAuth scopes)</h3>
             <ul>
               <li><code>https://www.googleapis.com/auth/calendar.app.created</code> — used only to create one secondary calendar named “Pawlette” and to create, update and delete events on that calendar. The App cannot change your other calendars with this scope.</li>
-              <li><code>https://www.googleapis.com/auth/calendar.events.owned.readonly</code> — used only to read, read-only, the events on calendars you own (your main calendar) so that they can be shown in the App’s monthly calendar.</li>
+              <li><code>https://www.googleapis.com/auth/calendar.events.owned.readonly</code> — used only to read, read-only, the events on your main (primary) Google Calendar, which you own, so that they can be shown in the App’s monthly calendar. The App does not read any other calendar.</li>
             </ul>
-            <p>Data handled: the title, date and time of events you create in the App, and information about the “Pawlette” calendar (ID, name, time zone); for display only, the title, start/end, event type, visibility, your own response status and the event link of your events. The App does not request event descriptions, locations, attendee e-mail addresses, your e-mail address, name or profile. Notes, categories and colors from the App are never sent to Google.</p>
+            <p>Data handled: the title, date and time of events you create in the App, and information about the “Pawlette” calendar (ID, name, time zone); for display only, the title, start/end, event type, visibility, your own response status and the event link of the events on your main (primary) Google Calendar. The App does not request event descriptions, locations, attendee e-mail addresses, your e-mail address, name or profile. Notes, categories and colors from the App are never sent to Google.</p>
             <h3>How the data is used</h3>
-            <p>Only to provide the two visible features: (1) syncing events you create in the App to the “Pawlette” calendar on Google, and (2) showing your own Google events in the App as read-only. The App never creates, changes or deletes anything on your main calendar or any calendar other than the “Pawlette” calendar. The data is not used for advertising, analytics, sale or transfer, or for training generalized AI or machine-learning models.</p>
+            <p>Only to provide the two visible features: (1) syncing events you create in the App to the “Pawlette” calendar on Google, and (2) showing the events on your main (primary) Google Calendar in the App as read-only. The App never creates, changes or deletes anything on your main (primary) Google Calendar or any calendar other than the “Pawlette” calendar. The data is not used for advertising, analytics, sale or transfer, or for training generalized AI or machine-learning models.</p>
             <h3>Where the data is stored, and for how long</h3>
-            <p>Only on your own PC, in <code>%APPDATA%\pawlette\google</code>. The operator runs no server of its own and never receives or stores your Google data. (1) Refresh token: encrypted with Windows DPAPI (Electron safeStorage) in <code>vault\auth.bin</code>; the access token is kept in memory only; if encryption is not available, the App does not start the connection. (2) Sync record (<code>journal</code>): links between App events and Google events, pending changes and your sync choice; not encrypted. (3) Display cache (<code>cache\overlay-cache.json</code>, up to about 8 MB): title/time information of your Google events for display and sync tokens; not encrypted. Everything is kept until you disconnect, and is deleted when you disconnect. Windows encryption protects against other Windows users, not against other apps running as the same user.</p>
+            <p>Only on your own PC, in <code>%APPDATA%\pawlette\google</code>. The operator runs no server of its own and never receives or stores your Google data. (1) Refresh token: encrypted with Windows DPAPI (Electron safeStorage) in <code>vault\auth.bin</code>; the access token is kept in memory only; if encryption is not available, the App does not start the connection. (2) Sync record (<code>journal</code>): links between App events and Google events, pending changes and your sync choice; not encrypted. (3) Display cache (<code>cache\overlay-cache.json</code>, up to about 8 MB): title/time information of the events on your main (primary) Google Calendar for display and sync tokens; not encrypted. Everything is kept until you disconnect, and is deleted when you disconnect. Windows encryption protects against other Windows users, not against other apps running as the same user.</p>
             <h3>Sharing</h3>
             <p>Google user data is not shared with, sold to or transferred to any third party. The operator does not analyze Google user data or your inquiries.</p>
             <h3>Network connections: automatic vs. on your action</h3>
@@ -252,7 +252,7 @@
             <p><strong>On your action only:</strong> connecting, “Sync now” and disconnecting; the “X Open” button, which only opens the X post screen in your default browser (nothing is posted or attached automatically); links to other sites.</p>
             <p>The website is served by GitHub Pages. Cloudflare provides DNS management and e-mail forwarding only; it is not used as a proxy or CDN for the website. GitHub may process access information such as IP address, browser type and access time, and Cloudflare may process the information needed for DNS resolution and e-mail forwarding, each under its own policy. The operator runs no analytics or advertising cookies and does not analyze this information, Google user data or your inquiries.</p>
             <h3>Deleting data and disconnecting</h3>
-            <p>In the App, open Settings → Google Calendar → Disconnect (the default choice in the confirmation is “Cancel”). The App asks Google to revoke access, deletes the token, the sync record and the cache from your PC, and stops all Google communication; if you are offline, revocation is retried when you are online again. <strong>The “Pawlette” calendar and the events already created in it stay on Google</strong>; delete them in Google Calendar if you do not need them. You can also remove the App’s access at any time in your Google Account (Security → third-party apps with account access). If data remains after uninstalling, delete <code>%APPDATA%\pawlette\google</code>. The operator holds no Google user data, so there is nothing to delete on the operator’s side. Inquiry e-mails are kept for one year after the matter is closed and then deleted (unless the law requires longer retention); on request from the sender, they are deleted to the extent possible.</p>
+            <p>In the App, open Settings → Google Calendar → Disconnect (the default choice in the confirmation is “Cancel”). The App asks Google to revoke access, deletes the token, the sync record and the cache from your PC, and stops all Google communication; if you are offline, revocation is retried when you are online again. <strong>The “Pawlette” calendar and the events already created in it stay on Google</strong>; delete them in Google Calendar if you do not need them. You can also remove the App’s access at any time in your Google Account (Security → third-party apps with account access). If data remains after uninstalling, delete <code>%APPDATA%\pawlette\google</code>. If a connection fails (refused, timed out or any other error) or only one of the two permissions is granted, the App saves nothing, stays disconnected and shows a short notice. The operator holds no Google user data, so there is nothing to delete on the operator’s side. Inquiry e-mails are kept for one year after the matter is closed and then deleted (unless the law requires longer retention); on request from the sender, they are deleted to the extent possible.</p>
             <h3>Limited Use</h3>
             <p lang="en">Pawlette’s use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy<span class="visually-hidden"> (external site, opens in a new tab)</span></a>, including the Limited Use requirements. No human reads Google user data (the operator has no access to it), except where you explicitly agree, for security, to comply with law, or for aggregated internal operations as the policy allows.</p>
             <p>Pawlette is not provided or endorsed by Google. Google Calendar is a trademark of Google LLC.</p>
