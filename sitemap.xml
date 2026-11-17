@@ -16,4 +16,8 @@
     <loc>https://pawlette-app.com/privacy.html</loc>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://pawlette-app.com/terms.html</loc>
+    <priority>0.5</priority>
+  </url>
 </urlset>
